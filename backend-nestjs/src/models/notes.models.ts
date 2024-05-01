@@ -1,10 +1,10 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
-export type UserDocument = User & Document;
+export type NoteDocument = Note & Document;
 
 @Schema()
-export class User {
+export class Note {
   @Prop({ required: true })
   fullname: string;
 
@@ -12,4 +12,4 @@ export class User {
   note: string;
 }
 
-export const UserSchema = SchemaFactory.createForClass(User);
+export const NoteSchema = SchemaFactory.createForClass(Note);
