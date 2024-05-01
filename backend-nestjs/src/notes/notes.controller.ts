@@ -8,15 +8,15 @@ import {
   Put,
   Query,
 } from '@nestjs/common';
-import { UserDto } from 'src/dto/users.dto';
-import { UsersService } from './users.service';
+import { NoteDto } from 'src/dto/notes.dto';
+import { NotesService } from './notes.service';
 
-@Controller('users')
-export class UsersController {
-  constructor(private readonly service: UsersService) {}
+@Controller('notes')
+export class NotesController {
+  constructor(private readonly service: NotesService) {}
 
   @Post()
-  Add(@Body() body: UserDto) {
+  Add(@Body() body: NoteDto) {
     return this.service.Add(body);
   }
 
@@ -31,7 +31,7 @@ export class UsersController {
   }
 
   @Put('/:id')
-  Update(@Param('id') id: string, @Body() body: UserDto) {
+  Update(@Param('id') id: string, @Body() body: NoteDto) {
     return this.service.Update(id, body);
   }
 
@@ -41,7 +41,7 @@ export class UsersController {
   }
 
   @Post('/search')
-  Search(@Query('key') key) {
+  Search(@Query('key') key: string) {
     return this.service.Search(key);
   }
 }
