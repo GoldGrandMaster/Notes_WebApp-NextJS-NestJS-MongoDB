@@ -3,14 +3,14 @@ import React, { useContext } from 'react';
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
 import { GlobalContext } from '../context/GlobalWrapper';
 
-const Row = ({ id, fullname, note }) => {
+const Row = ({ id, fullName, note }) => {
   const { Delete, onOpen, FindOne } = useContext(GlobalContext);
   return (
     <Tr>
       <Td>
-        <Avatar name={fullname} />
+        <Avatar name={fullName} />
       </Td>
-      <Td>{fullname}</Td>
+      <Td>{fullName}</Td>
       <Td>{note}</Td>
       <Td>
         <Box display="flex" gap="1">

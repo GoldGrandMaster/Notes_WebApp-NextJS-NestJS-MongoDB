@@ -1,39 +1,37 @@
-import { NextRequest, NextResponse } from 'next/server'
-export async function GET(request : NextRequest,{ params }: { params: { id: string } }) {
-  const res = await fetch(process.env.PATH_URL_BACKEND+`/api/notes/${params.id}`, {
-    next: { revalidate: 10 } ,
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  })
-  const result = await res.json()
+import { NextRequest, NextResponse } from 'next/server';
 
-  console.log(result);
+// Helper function to handle fetch requests
+async function fetchAPI(method: string, path: string, body: any = null) {
+  const url = `${process.env.PATH_URL_BACKEND}/api/notes/${path}`;
+  const headers = {
+    'Content-Type': 'application/json',
+  };
+  const config: RequestInit = {
+    method,
+    headers,
+  };
 
-  return NextResponse.json(result)
+  if (body) {
+    config.body = JSON.stringify(body);
+  }
+
+  const response = await fetch(url, config);
+  const data = await response.json();
+  return data;
 }
-export async function PUT(request: NextRequest,{ params }: { params: { id: string } }) {
-  const body = await request.json()
-  const res = await fetch(process.env.PATH_URL_BACKEND+`/api/notes/${params.id}`, {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(body),
-  })
-  const data = await res.json();
-  return NextResponse.json(data)
 
+export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
+  const result = await fetchAPI('GET', params.id);
+  return NextResponse.json(result);
 }
-export async function DELETE(request: NextRequest,{ params }: { params: { id: string } }) {
-  const res = await fetch(process.env.PATH_URL_BACKEND+`/api/notes/${params.id}`, {
-    next: { revalidate: 10 },
-    method: 'DELETE',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  })
-  const data = await res.json();
-  return NextResponse.json(data)
 
+export async function PUT(request: NextRequest, { params }: { params: { id: string } }) {
+  const body = await request.json();
+  const data = await fetchAPI('PUT', params.id, body);
+  return NextResponse.json(data);
+}
+
+export async function DELETE(request: NextRequest, { params }: { params: { id: string } }) {
+  const data = await fetchAPI('DELETE', params.id);
+  return NextResponse.json(data);
 }

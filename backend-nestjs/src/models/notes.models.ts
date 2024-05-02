@@ -6,7 +6,7 @@ export type NoteDocument = Note & Document;
 @Schema()
 export class Note {
   @Prop({ required: true })
-  fullname: string;
+  fullName: string;
 
   @Prop({ required: true })
   note: string;

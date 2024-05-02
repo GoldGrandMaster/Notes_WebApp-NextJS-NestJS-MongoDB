@@ -1,14 +1,14 @@
 export  interface UserModel{
     _id:string,
-    fullname:string,
+    fullName:string,
 }
 export  interface NoteModel{
     _id: string,
-    fullname:string,
+    fullName:string,
     note:string,
     deleteNote:(id: string)=> void;
 }
 export interface NoteAddModel{
-    fullname:string,
+    fullName:string,
     note:string
 }

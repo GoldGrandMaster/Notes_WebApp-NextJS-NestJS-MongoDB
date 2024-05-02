@@ -5,7 +5,7 @@ import useSWR from 'swr'
 export default function Detail({params}: {params:{id :number}}) {
   const {data: note, isLoading, error}  = useSWR(`/api/notes/${params.id}`,fetcher)
   
-  if(isLoading) return <div><span>Loading...</span></div>
+  if(isLoading) return <div>Loading...</div>
   if (!note) return null;
   return (
     <div className='w-full'>
