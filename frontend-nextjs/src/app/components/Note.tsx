@@ -5,7 +5,7 @@ import Link from 'next/link'
 export default function Note(params: NoteModel) {
   return (
     <tr>
-        <td className='border border-slate-300 text-center'>{params.fullname}</td>
+        <td className='border border-slate-300 text-center'>{params.fullName}</td>
         <td className='border border-slate-300 text-center'>{params.note}</td>
         <td className='border border-slate-300'>
           <div className='flex gap-2 px-2'>

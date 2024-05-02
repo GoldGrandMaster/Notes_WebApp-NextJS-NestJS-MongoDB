@@ -53,10 +53,10 @@ export default function DrawerExample() {
           <DrawerBody>
             <Stack spacing={'24px'}>
               <InputsGroup
-                name="fullname"
+                name="fullName"
                 onChangeHandler={onChangeHandler}
-                value={form?.fullname}
-                errors={errors?.fullname}
+                value={form?.fullName}
+                errors={errors?.fullName}
               />
               <InputsGroup
                 name="note"

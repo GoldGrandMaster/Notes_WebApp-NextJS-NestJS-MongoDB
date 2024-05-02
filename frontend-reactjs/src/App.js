@@ -73,17 +73,17 @@ function App() {
               <Thead>
                 <Tr>
                   <Th>Avatar</Th>
-                  <Th>Fullname</Th>
+                  <Th>fullName</Th>
                   <Th>Note</Th>
                   <Th>Actions</Th>
                 </Tr>
               </Thead>
               <Tbody>
-                {users?.map(({ _id, fullname, note }) => {
+                {users?.map(({ _id, fullName, note }) => {
                   return (
                     <Row
                       id={_id}
-                      fullname={fullname}
+                      fullName={fullName}
                       note={note}
                     />
                   );

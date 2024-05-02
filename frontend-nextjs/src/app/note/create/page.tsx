@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation'
 export default function NoteCreate() {
   const router = useRouter()
   const [note, setNote] = useState<string>('');
-  const [fullname, setFullname] = useState<string>('');
+  const [fullName, setfullName] = useState<string>('');
   const [formError, setFormError] = useState<string>('');
 
   const addNote = async (e: any) => {
@@ -20,9 +20,9 @@ export default function NoteCreate() {
       return;
     }
 
-    if (note != "" && fullname != "") {
+    if (note != "" && fullName != "") {
       const formData = {
-          fullname: fullname,
+          fullName: fullName,
           note: note
       }
       const add = await fetch('/api/notes', {
@@ -43,7 +43,7 @@ export default function NoteCreate() {
       setFormError("");
       return ;
     }
-    setFormError("Please fill note and fullname");
+    setFormError("Please fill note and fullName");
     
   };
   return (
@@ -51,7 +51,7 @@ export default function NoteCreate() {
       <span className='font-bold text-yellow-500 py-2 block underline text-2xl'>Form Add</span>
       <div className='w-full py-2'>
         <label htmlFor="" className='text-sm font-bold py-2 block'>Full Name</label>
-        <input type='text' name='fullname' className='w-full border-[1px] border-gray-200 p-2 rounded-sm'  onChange={(e:any)=>setFullname(e.target.value)}/>
+        <input type='text' name='fullName' className='w-full border-[1px] border-gray-200 p-2 rounded-sm'  onChange={(e:any)=>setfullName(e.target.value)}/>
       </div>
       <div className='w-full py-2'>
         <label htmlFor="" className='text-sm font-bold py-2 block'>Note</label>

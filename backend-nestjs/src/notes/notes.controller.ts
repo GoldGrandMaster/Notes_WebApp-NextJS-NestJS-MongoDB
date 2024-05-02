@@ -9,11 +9,11 @@ import {
   Query,
 } from '@nestjs/common';
 import { NoteDto } from 'src/dto/notes.dto';
-import { NotesService } from './notes.service';
+import { notesService } from './notes.service';
 
 @Controller('notes')
-export class NotesController {
-  constructor(private readonly service: NotesService) {}
+export class notesController {
+  constructor(private readonly service: notesService) {}
 
   @Post()
   Add(@Body() body: NoteDto) {

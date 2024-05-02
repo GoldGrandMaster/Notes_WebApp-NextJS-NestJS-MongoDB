@@ -5,7 +5,7 @@ import { NoteDto } from 'src/dto/notes.dto';
 import { Note, NoteDocument } from 'src/models/notes.models';
 
 @Injectable()
-export class NotesService {
+export class notesService {
   constructor(@InjectModel(Note.name) private noteModel: Model<NoteDocument>) {}
   Add(body: NoteDto) {
     return this.noteModel.create(body);
@@ -35,7 +35,7 @@ export class NotesService {
     const keyword = key
       ? {
           $or: [
-            { fullname: { $regex: key, $options: 'i' } },
+            { fullName: { $regex: key, $options: 'i' } },
             { note: { $regex: key, $options: 'i' } },
           ],
         }

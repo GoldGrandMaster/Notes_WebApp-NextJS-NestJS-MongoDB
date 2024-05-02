@@ -7,25 +7,25 @@ import useSWR from 'swr'
 export default function NoteEdit({ params }: { params: { id: string } }) {
   const router = useRouter()
   const { data: record, isLoading, error } = useSWR(`/api/notes/${params.id}`, fetcher)
-  const [fullname, setFullname] = useState<string>('');
+  const [fullName, setfullName] = useState<string>('');
   const [note, setNote] = useState<string>('');
 
   useEffect(() => {
     if (record) {
-      setFullname(record?.fullname)
+      setfullName(record?.fullName)
       setNote(record?.note)
     }
     else {
-      setFullname('');
+      setfullName('');
       setNote('');
     }
   }, [record, isLoading])
 
   const updateNote = async (e: any) => {
     e.preventDefault()
-    if (fullname != "" && note != "") {
+    if (fullName != "" && note != "") {
       const formData = {
-        fullname: fullname,
+        fullName: fullName,
         note: note
       }
       const res = await fetch(`/api/notes/${params.id}`, {
@@ -44,14 +44,14 @@ export default function NoteEdit({ params }: { params: { id: string } }) {
     }
   };
 
-  if (isLoading) return <div><span>Loading...</span></div>
+  if (isLoading) return <div>Loading...</div>
   if (!record) return null;
   return (
     <form className='w-full' onSubmit={updateNote}>
       <span className='font-bold text-yellow-500 py-2 block underline text-2xl'>Form Edit</span>
       <div className='w-full py-2'>
         <label htmlFor="" className='text-sm font-bold py-2 block'>Full Name</label>
-        <input type='text' name='title' className='w-full border-[1px] border-gray-200 p-2 rounded-sm' value={fullname} onChange={(e: any) => setFullname(e.target.value)} />
+        <input type='text' name='title' className='w-full border-[1px] border-gray-200 p-2 rounded-sm' value={fullName} onChange={(e: any) => setfullName(e.target.value)} />
       </div>
       <div className='w-full py-2'>
         <label htmlFor="" className='text-sm font-bold py-2 block'>Note</label>
