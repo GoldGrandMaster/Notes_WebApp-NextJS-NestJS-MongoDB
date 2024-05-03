@@ -14,7 +14,6 @@ This project is for technical assessment of Solace.
 
 ## Installation
 
-Provide step-by-step series of examples and explanations about how to set up a development environment. 
 
 ```bash
 git clone https://github.com/GoldGrandMaster/Notes_WebApp-NextJS-NestJS-MongoDB.git
