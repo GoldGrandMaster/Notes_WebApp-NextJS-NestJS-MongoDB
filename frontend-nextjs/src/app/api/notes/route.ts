@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function GET() {
-  const res = await fetch(process.env.PATH_URL_BACKEND+'/api/notes', {
+  const res = await fetch(process.env.PATH_URL_BACKEND + '/api/notes', {
     headers: {
       'Content-Type': 'application/json',
     },
@@ -11,7 +11,7 @@ export async function GET() {
 }
 export async function POST(request: NextRequest) {
   const body = await request.json()
-  const res = await fetch(process.env.PATH_URL_BACKEND+'/api/notes', {
+  const res = await fetch(process.env.PATH_URL_BACKEND + '/api/notes', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

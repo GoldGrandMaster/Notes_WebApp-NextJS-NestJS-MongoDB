@@ -1,4 +1,4 @@
-# complete-crud-nest-react
+# complete-Solace:"Notes" Web App-NestJS-NextJS
 
 # 1- Backend (5000 port)
 
@@ -8,8 +8,5 @@ run npm install and npm run start:dev
 
 # 2- Frontend (3000 port)
 
-run npm install and npm start
+run npm install and npm run dev
 
-# 3- together
-
-run npm run start:together
