@@ -4,11 +4,11 @@ This app allows a user to Index, Create, Update and Delete notes.
 
 ## Description
 
-This project is for technical assessment.
+This project is for technical assessment of Solace.
 
 ## Tech Stack
 
-- **Frontend**: Next.js
+- **Frontend**: NextJS
 - **Backend**: NestJS
 - **Database**: MongoDB
 
