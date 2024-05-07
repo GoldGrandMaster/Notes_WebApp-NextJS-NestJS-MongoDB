@@ -4,11 +4,11 @@ import { useRouter } from 'next/navigation'
 import { fetcher } from '@/app/libs'
 import useSWR from 'swr'
 import { useForm } from 'react-hook-form'
-import Loader from '@/app/components/Loader'
+
 
 export default function NoteEdit({ params }: { params: { id: string } }) {
   const router = useRouter()
-  const { data: record, isLoading, error } = useSWR(`/api/notes/${params.id}`, fetcher)
+  const { data: record, isLoading, error } = useSWR(`http://localhost:5000/api/notes/${params.id}`, fetcher) // ${process.env.PATH_URL_BACKEND}/api/notes/${params.id}
   const { register, handleSubmit, reset } = useForm({});
   const [formError, setFormError] = useState<string>("");
 
@@ -38,7 +38,7 @@ export default function NoteEdit({ params }: { params: { id: string } }) {
         fullName: e.fullName,
         note: e.note
       }
-      const res = await fetch(`/api/notes/${params.id}`, {
+      const res = await fetch(`http://localhost:5000/api/notes/${params.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -54,7 +54,6 @@ export default function NoteEdit({ params }: { params: { id: string } }) {
     }
   };
 
-  if (isLoading) return <Loader />;
   if (!record) return null;
   return (
     <form className='w-full' onSubmit={handleSubmit(updateNote)}>
@@ -68,7 +67,7 @@ export default function NoteEdit({ params }: { params: { id: string } }) {
         <textarea className='w-full border-[1px] border-gray-200 p-2 rounded-sm' { ...register("note") } />
       </div>
       { formError != "" &&
-        <div className='p-2'>
+        <div className='p-2 text-red-600'>
           {formError}
         </div>
       }

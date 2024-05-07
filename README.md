@@ -4,17 +4,17 @@ This app allows a user to Index, Create, Update and Delete notes.
 
 ## Description
 
-This project is for technical assessment.
+This project is for technical assessment of Solace.
 
 ## Tech Stack
 
-- **Frontend**: Next.js
+- **Frontend**: NextJS
 - **Backend**: NestJS
 - **Database**: MongoDB
 
 ## Installation
 
-Provide step-by-step series of examples and explanations about how to set up a development environment. 
+
 
 ```bash
 git clone https://github.com/GoldGrandMaster/Notes_WebApp-NextJS-NestJS-MongoDB.git
