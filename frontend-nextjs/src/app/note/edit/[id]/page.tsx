@@ -5,10 +5,9 @@ import { fetcher } from '@/app/libs'
 import useSWR from 'swr'
 import { useForm } from 'react-hook-form'
 
-
 export default function NoteEdit({ params }: { params: { id: string } }) {
   const router = useRouter()
-  const { data: record, isLoading, error } = useSWR(`http://localhost:5000/api/notes/${params.id}`, fetcher) // ${process.env.PATH_URL_BACKEND}/api/notes/${params.id}
+  const { data: record, isLoading, error } = useSWR(`${process.env.NEXT_PUBLIC_BACKENDURL}/api/notes/${params.id}`, fetcher)
   const { register, handleSubmit, reset } = useForm({});
   const [formError, setFormError] = useState<string>("");
 
@@ -38,7 +37,7 @@ export default function NoteEdit({ params }: { params: { id: string } }) {
         fullName: e.fullName,
         note: e.note
       }
-      const res = await fetch(`http://localhost:5000/api/notes/${params.id}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BACKENDURL}/api/notes/${params.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'

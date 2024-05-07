@@ -25,7 +25,7 @@ export default function NoteCreate() {
           fullName: fullName,
           note: note
       }
-      const add = await fetch('http://localhost:5000/api/notes', {
+      const add = await fetch(`${process.env.NEXT_PUBLIC_BACKENDURL}/api/notes`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
