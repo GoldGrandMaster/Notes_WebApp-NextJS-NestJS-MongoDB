@@ -13,7 +13,7 @@ export default function Notes() {
   const [searchTerm, setSearchTerm] = useState<string>('');
 
   const loadInitialData = async () => {
-    const res = await fetch(`http://localhost:5000/api/notes/search?key=${search}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKENDURL}/api/notes/search?key=${search}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -28,7 +28,7 @@ export default function Notes() {
 
   let delete_Note : NoteModel['deleteNote']= async (id:string) => {
 
-    const res = await fetch(`http://localhost:5000/api/notes/${id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKENDURL}/api/notes/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
