@@ -10,7 +10,7 @@ export default function Note(params: NoteModel) {
         <td className='border border-slate-300'>
           <div className='flex gap-2 px-2'>
             <Link href={`/note/edit/${params._id}`} className='p-2 bg-orange-600 rounded-md text-white'>Edit</Link>
-            <button className='p-2 bg-red-600 rounded-md text-white' onClick={() => params.deleteNote(params._id)}>Delete</button>
+            <Link href={`/#`} className='p-2 bg-red-600 rounded-md text-white' onClick={() => params.deleteNote(params._id)}>Delete</Link>
           </div>
         </td>
     </tr>

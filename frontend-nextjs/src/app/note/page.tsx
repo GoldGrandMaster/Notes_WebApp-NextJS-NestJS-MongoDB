@@ -13,7 +13,7 @@ export default function Notes() {
   const [searchTerm, setSearchTerm] = useState<string>('');
 
   const loadInitialData = async () => {
-    const res = await fetch(`/api/notes/search?key=${search}`, {
+    const res = await fetch(`http://localhost:5000/api/notes/search?key=${search}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -28,7 +28,7 @@ export default function Notes() {
 
   let delete_Note : NoteModel['deleteNote']= async (id:string) => {
 
-    const res = await fetch(`/api/notes/${id}`, {
+    const res = await fetch(`http://localhost:5000/api/notes/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
@@ -49,7 +49,7 @@ export default function Notes() {
 
   return (
     <div className="w-full max-w-7xl m-auto">
-      <div className="w-full flex items-center m-2 px-4 py-8 rounded-lg shadow-md gap-4">
+      <div className="w-full flex items-center px-4 py-8 rounded-lg shadow-md gap-4">
         <input
           type="text"
           name="searchTerm"
@@ -58,15 +58,15 @@ export default function Notes() {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <Link href={`/note?search=${searchTerm}`} className="flex items-center justify-center h-[40px] px-8 border-green-600 border-[2px] rounded-md">Search</Link>
+        <Link href={`/note?search=${searchTerm}`} className="p-2 bg-green-600 rounded-md text-white">Search</Link>
       </div>
-      <div className="flex justify-between p-2" >
+      <div className="flex justify-between items-center py-4" >
         <div className="font-bold text-green-500 text-2xl text-left">
           List Notes :
           <span className="text-red-500 font-bold"> {notes?.length || 0}</span>
         </div>
         <div>
-          <Link href={`/note/create`} className="bg-green-500 p-2 inline-block text-white">Add Note</Link>
+          <Link href={`/note/create`} className="p-2 bg-green-600 rounded-md text-white">Add Note</Link>
         </div>
       </div>
       <table className="w-full border-collapse border border-slate-400">
